@@ -5,6 +5,7 @@ import org.example.FareStrategyPattern.BasicHourlyRateStrategy;
 import org.example.FareStrategyPattern.ParkingFeeStrategy;
 import org.example.FareStrategyPattern.PremiumRateStrategy;
 import org.example.ParkingLotController.ParkingLot;
+import org.example.ParkingLotController.ParkingLotBuilder;
 import org.example.ParkingSpots.BikeParkingSpot;
 import org.example.ParkingSpots.CarParkingSpot;
 import org.example.ParkingSpots.ParkingSpot;
@@ -30,7 +31,8 @@ public class Main {
         parkingSpots.add(new BikeParkingSpot(3, "Bike"));
         parkingSpots.add(new BikeParkingSpot(4, "Bike"));
         // Initialize parking lot
-        ParkingLot parkingLot = new ParkingLot(parkingSpots);
+        ParkingLot parkingLot = new ParkingLotBuilder().createFloor(1, 2, 2)
+                .createFloor(2, 3, 1, 1).build();
         // Create fee strategies
         ParkingFeeStrategy basicHourlyRateStrategy = new BasicHourlyRateStrategy();
         ParkingFeeStrategy premiumRateStrategy = new PremiumRateStrategy();
